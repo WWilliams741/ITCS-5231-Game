@@ -73,6 +73,74 @@ ModelImporter:
     100134: mixamorig:Spine1
     100136: mixamorig:Spine2
     100138: //RootNode
+    100140: Body
+    100142: Head
+    100144: Head_Hands
+    100146: HeadTop_End
+    100148: Hips
+    100150: LeftArm
+    100152: LeftFoot
+    100154: LeftForeArm
+    100156: LeftHand
+    100158: LeftHandIndex1
+    100160: LeftHandIndex2
+    100162: LeftHandIndex3
+    100164: LeftHandIndex4
+    100166: LeftHandMiddle1
+    100168: LeftHandMiddle2
+    100170: LeftHandMiddle3
+    100172: LeftHandMiddle4
+    100174: LeftHandPinky1
+    100176: LeftHandPinky2
+    100178: LeftHandPinky3
+    100180: LeftHandPinky4
+    100182: LeftHandRing1
+    100184: LeftHandRing2
+    100186: LeftHandRing3
+    100188: LeftHandRing4
+    100190: LeftHandThumb1
+    100192: LeftHandThumb2
+    100194: LeftHandThumb3
+    100196: LeftHandThumb4
+    100198: LeftLeg
+    100200: LeftShoulder
+    100202: LeftToe_End
+    100204: LeftToeBase
+    100206: LeftUpLeg
+    100208: Lower_Armor
+    100210: Neck
+    100212: RightArm
+    100214: RightFoot
+    100216: RightForeArm
+    100218: RightHand
+    100220: RightHandIndex1
+    100222: RightHandIndex2
+    100224: RightHandIndex3
+    100226: RightHandIndex4
+    100228: RightHandMiddle1
+    100230: RightHandMiddle2
+    100232: RightHandMiddle3
+    100234: RightHandMiddle4
+    100236: RightHandPinky1
+    100238: RightHandPinky2
+    100240: RightHandPinky3
+    100242: RightHandPinky4
+    100244: RightHandRing1
+    100246: RightHandRing2
+    100248: RightHandRing3
+    100250: RightHandRing4
+    100252: RightHandThumb1
+    100254: RightHandThumb2
+    100256: RightHandThumb3
+    100258: RightHandThumb4
+    100260: RightLeg
+    100262: RightShoulder
+    100264: RightToe_End
+    100266: RightToeBase
+    100268: RightUpLeg
+    100270: Spine
+    100272: Spine1
+    100274: Spine2
     400000: Alpha_Joints
     400002: Alpha_Surface
     400004: mixamorig:Head
@@ -143,14 +211,89 @@ ModelImporter:
     400134: mixamorig:Spine1
     400136: mixamorig:Spine2
     400138: //RootNode
+    400140: Body
+    400142: Head
+    400144: Head_Hands
+    400146: HeadTop_End
+    400148: Hips
+    400150: LeftArm
+    400152: LeftFoot
+    400154: LeftForeArm
+    400156: LeftHand
+    400158: LeftHandIndex1
+    400160: LeftHandIndex2
+    400162: LeftHandIndex3
+    400164: LeftHandIndex4
+    400166: LeftHandMiddle1
+    400168: LeftHandMiddle2
+    400170: LeftHandMiddle3
+    400172: LeftHandMiddle4
+    400174: LeftHandPinky1
+    400176: LeftHandPinky2
+    400178: LeftHandPinky3
+    400180: LeftHandPinky4
+    400182: LeftHandRing1
+    400184: LeftHandRing2
+    400186: LeftHandRing3
+    400188: LeftHandRing4
+    400190: LeftHandThumb1
+    400192: LeftHandThumb2
+    400194: LeftHandThumb3
+    400196: LeftHandThumb4
+    400198: LeftLeg
+    400200: LeftShoulder
+    400202: LeftToe_End
+    400204: LeftToeBase
+    400206: LeftUpLeg
+    400208: Lower_Armor
+    400210: Neck
+    400212: RightArm
+    400214: RightFoot
+    400216: RightForeArm
+    400218: RightHand
+    400220: RightHandIndex1
+    400222: RightHandIndex2
+    400224: RightHandIndex3
+    400226: RightHandIndex4
+    400228: RightHandMiddle1
+    400230: RightHandMiddle2
+    400232: RightHandMiddle3
+    400234: RightHandMiddle4
+    400236: RightHandPinky1
+    400238: RightHandPinky2
+    400240: RightHandPinky3
+    400242: RightHandPinky4
+    400244: RightHandRing1
+    400246: RightHandRing2
+    400248: RightHandRing3
+    400250: RightHandRing4
+    400252: RightHandThumb1
+    400254: RightHandThumb2
+    400256: RightHandThumb3
+    400258: RightHandThumb4
+    400260: RightLeg
+    400262: RightShoulder
+    400264: RightToe_End
+    400266: RightToeBase
+    400268: RightUpLeg
+    400270: Spine
+    400272: Spine1
+    400274: Spine2
     2100000: Alpha_Body_MAT
     2100002: Alpha_Joints_MAT
+    2100004: Knight_MAT
     4300000: Alpha_Surface
     4300002: Alpha_Joints
+    4300004: Head_Hands
+    4300006: Body
+    4300008: Lower_Armor
     7400000: Running
     9500000: //RootNode
     13700000: Alpha_Joints
     13700002: Alpha_Surface
+    13700004: Body
+    13700006: Head_Hands
+    13700008: Lower_Armor
   externalObjects: {}
   materials:
     importMaterials: 1

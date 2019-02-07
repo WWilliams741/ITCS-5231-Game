@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
+        print(anim.GetBool("Punching"));
     }
 
     void MovePlayer()
     {
-        if (Cursor.lockState == CursorLockMode.Locked)
+        if (Cursor.lockState == CursorLockMode.Locked && !anim.GetBool("Punching"))
         {
             movementInput = new Vector3(Input.GetAxisRaw("Horizontal") * speed, 0f, Input.GetAxisRaw("Vertical") * speed);
             movementInput = transform.TransformDirection(movementInput);
@@ -45,7 +46,17 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("Moving", false);
             }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                anim.SetInteger("Attack", Random.Range(0, 3));
+                anim.SetBool("Attacking", true);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                anim.SetBool("Attacking", false);
+            }
         }
-        
     }
 }

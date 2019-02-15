@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 5f;
+        speed = 7f;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -21,12 +21,11 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
-        print(anim.GetBool("Punching"));
     }
 
     void MovePlayer()
     {
-        if (Cursor.lockState == CursorLockMode.Locked && !anim.GetBool("Punching"))
+        if (Cursor.lockState == CursorLockMode.Locked && !anim.GetBool("Attacking"))
         {
             movementInput = new Vector3(Input.GetAxisRaw("Horizontal") * speed, 0f, Input.GetAxisRaw("Vertical") * speed);
             movementInput = transform.TransformDirection(movementInput);

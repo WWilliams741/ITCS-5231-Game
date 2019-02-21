@@ -69,6 +69,44 @@ ModelImporter:
     100126: Spine
     100128: Spine1
     100130: Spine2
+    100132: Mutant:Head
+    100134: Mutant:HeadTop_End
+    100136: Mutant:Hips
+    100138: Mutant:LeftArm
+    100140: Mutant:LeftFoot
+    100142: Mutant:LeftForeArm
+    100144: Mutant:LeftHand
+    100146: Mutant:LeftLeg
+    100148: Mutant:LeftShoulder
+    100150: Mutant:LeftToe_End
+    100152: Mutant:LeftToeBase
+    100154: Mutant:LeftUpLeg
+    100156: Mutant:Neck
+    100158: Mutant:RightArm
+    100160: Mutant:RightFoot
+    100162: Mutant:RightForeArm
+    100164: Mutant:RightHand
+    100166: Mutant:RightHandIndex1
+    100168: Mutant:RightHandIndex2
+    100170: Mutant:RightHandIndex3
+    100172: Mutant:RightHandIndex4
+    100174: Mutant:RightHandPinky1
+    100176: Mutant:RightHandPinky2
+    100178: Mutant:RightHandPinky3
+    100180: Mutant:RightHandPinky4
+    100182: Mutant:RightHandThumb1
+    100184: Mutant:RightHandThumb2
+    100186: Mutant:RightHandThumb3
+    100188: Mutant:RightHandThumb4
+    100190: Mutant:RightLeg
+    100192: Mutant:RightShoulder
+    100194: Mutant:RightToe_End
+    100196: Mutant:RightToeBase
+    100198: Mutant:RightUpLeg
+    100200: Mutant:Spine
+    100202: Mutant:Spine1
+    100204: Mutant:Spine2
+    100206: MutantMesh
     400000: Head
     400002: HeadTop_End
     400004: Hips
@@ -135,8 +173,49 @@ ModelImporter:
     400126: Spine
     400128: Spine1
     400130: Spine2
+    400132: Mutant:Head
+    400134: Mutant:HeadTop_End
+    400136: Mutant:Hips
+    400138: Mutant:LeftArm
+    400140: Mutant:LeftFoot
+    400142: Mutant:LeftForeArm
+    400144: Mutant:LeftHand
+    400146: Mutant:LeftLeg
+    400148: Mutant:LeftShoulder
+    400150: Mutant:LeftToe_End
+    400152: Mutant:LeftToeBase
+    400154: Mutant:LeftUpLeg
+    400156: Mutant:Neck
+    400158: Mutant:RightArm
+    400160: Mutant:RightFoot
+    400162: Mutant:RightForeArm
+    400164: Mutant:RightHand
+    400166: Mutant:RightHandIndex1
+    400168: Mutant:RightHandIndex2
+    400170: Mutant:RightHandIndex3
+    400172: Mutant:RightHandIndex4
+    400174: Mutant:RightHandPinky1
+    400176: Mutant:RightHandPinky2
+    400178: Mutant:RightHandPinky3
+    400180: Mutant:RightHandPinky4
+    400182: Mutant:RightHandThumb1
+    400184: Mutant:RightHandThumb2
+    400186: Mutant:RightHandThumb3
+    400188: Mutant:RightHandThumb4
+    400190: Mutant:RightLeg
+    400192: Mutant:RightShoulder
+    400194: Mutant:RightToe_End
+    400196: Mutant:RightToeBase
+    400198: Mutant:RightUpLeg
+    400200: Mutant:Spine
+    400202: Mutant:Spine1
+    400204: Mutant:Spine2
+    400206: MutantMesh
+    2100000: mutant_M
+    4300000: MutantMesh
     7400000: mixamo.com
     9500000: //RootNode
+    13700000: MutantMesh
   externalObjects: {}
   materials:
     importMaterials: 1

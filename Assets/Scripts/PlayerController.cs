@@ -51,11 +51,15 @@ public class PlayerController : MonoBehaviour
                 anim.SetInteger("Attack", Random.Range(0, 3));
                 anim.SetBool("Attacking", true);
             }
-
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+            else
             {
                 anim.SetBool("Attacking", false);
             }
         }
+    }
+
+    public void DealDamage(int damage)
+    {
+        print("Dealing: " + damage + " damage.");
     }
 }

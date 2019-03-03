@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    bool touchingEnemy;
     float speed;
     Vector3 movementInput;
     Rigidbody rb;
+    private EnemyScript enemyTouched;
     [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        touchingEnemy = false;
         speed = 7f;
         rb = GetComponent<Rigidbody>();
     }
@@ -58,8 +61,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            touchingEnemy = true;
+            enemyTouched = other.gameObject.GetComponent<EnemyScript>();
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            touchingEnemy = false;
+            enemyTouched = null;
+        }
+    }
+
     public void DealDamage(int damage)
     {
         print("Dealing: " + damage + " damage.");
+
+        if (touchingEnemy)
+        {
+            enemyTouched.TakeDamage(damage);
+        }
     }
 }

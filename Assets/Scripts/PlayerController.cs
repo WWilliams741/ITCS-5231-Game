@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    bool touchingEnemy;
     float speed;
     Vector3 movementInput;
     Rigidbody rb;
-    private EnemyScript enemyTouched;
     [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        touchingEnemy = false;
         speed = 7f;
         rb = GetComponent<Rigidbody>();
     }
@@ -24,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
-        Debug.DrawLine(transform.position, Vector3.forward, Color.red);
+        Debug.DrawRay(new Vector3(transform.position.x, 1f, transform.position.y), transform.forward * 20, Color.red);
     }
 
     void MovePlayer()
@@ -36,7 +33,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = movementInput;
         }
     }
-
+    
     void AnimatePlayer()
     {
         if(Cursor.lockState == CursorLockMode.Locked)
@@ -62,32 +59,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
-            touchingEnemy = true;
-            enemyTouched = other.gameObject.GetComponent<EnemyScript>();
-        }
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
-            touchingEnemy = false;
-            enemyTouched = null;
-        }
-    }
-
     public void DealDamage(int damage)
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.forward, out hit))
+        Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.y), transform.forward * 20);
+        if(Physics.Raycast(ray, out hit))
         {
             Debug.Log("Enemy was hit by raycast");
             GameObject hitObject = hit.collider.gameObject;
-            if(hitObject.tag.Equals("Enemy") && Vector3.Distance(transform.position, hitObject.transform.position) < 3)
+            if(hitObject.tag.Equals("Enemy"))
             {
                 hitObject.GetComponent<EnemyScript>().TakeDamage(damage);
             }

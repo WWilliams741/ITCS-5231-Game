@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    Vector2 lookDirection;
+     Vector2 lookDirection;
     Vector2 smoothingVector;
     GameObject player;
 

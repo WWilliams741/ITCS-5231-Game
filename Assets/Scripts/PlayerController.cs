@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
+        Debug.DrawLine(transform.position, Vector3.forward, Color.red);
     }
 
     void MovePlayer()
@@ -81,11 +82,15 @@ public class PlayerController : MonoBehaviour
 
     public void DealDamage(int damage)
     {
-        print("Dealing: " + damage + " damage.");
-
-        if (touchingEnemy)
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.forward, out hit))
         {
-            enemyTouched.TakeDamage(damage);
+            Debug.Log("Enemy was hit by raycast");
+            GameObject hitObject = hit.collider.gameObject;
+            if(hitObject.tag.Equals("Enemy") && Vector3.Distance(transform.position, hitObject.transform.position) < 3)
+            {
+                hitObject.GetComponent<EnemyScript>().TakeDamage(damage);
+            }
         }
     }
 }

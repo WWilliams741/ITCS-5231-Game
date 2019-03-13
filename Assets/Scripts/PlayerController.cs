@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
-        Debug.DrawRay(new Vector3(transform.position.x, 1f, transform.position.y), transform.forward * 20, Color.red);
+        Debug.DrawRay(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1f, Color.red);
     }
 
     void MovePlayer()
@@ -62,8 +62,8 @@ public class PlayerController : MonoBehaviour
     public void DealDamage(int damage)
     {
         RaycastHit hit;
-        Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.y), transform.forward * 20);
-        if(Physics.Raycast(ray, out hit))
+        Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1f);
+        if(Physics.Raycast(ray, out hit, 1f))
         {
             Debug.Log("Enemy was hit by raycast");
             GameObject hitObject = hit.collider.gameObject;

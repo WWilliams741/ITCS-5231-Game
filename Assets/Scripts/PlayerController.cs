@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     float speed;
     Vector3 movementInput;
     Rigidbody rb;
+    private bool blocking;
     [SerializeField] Animator anim;
     [SerializeField] private int health;
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         speed = 7f;
         health = 100;
+        blocking = false;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -53,14 +55,24 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Moving", false);
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetMouseButtonDown(0))
             {
                 anim.SetInteger("Attack", Random.Range(0, 3));
                 anim.SetBool("Attacking", true);
             }
-            else
+            if(Input.GetMouseButtonUp(0))
             {
                 anim.SetBool("Attacking", false);
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                blocking = true;
+                anim.SetBool("Blocking", blocking);
+            }
+            if(Input.GetMouseButtonUp(1))
+            {
+                blocking = false;
+                anim.SetBool("Blocking", blocking);
             }
         }
     }

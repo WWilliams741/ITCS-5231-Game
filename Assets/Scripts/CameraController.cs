@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-     Vector2 lookDirection;
+    Vector2 lookDirection;
     Vector2 smoothingVector;
     GameObject player;
 
-    [SerializeField]
-    float sensitivity;
-
-    [SerializeField]
-    float smoothing;
+    [SerializeField] float sensitivity;
+    [SerializeField] float smoothing;
 
     // Start is called before the first frame update
     void Start()

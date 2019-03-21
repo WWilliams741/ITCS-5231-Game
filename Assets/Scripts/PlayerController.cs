@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     Vector3 movementInput;
     Rigidbody rb;
     [SerializeField] Animator anim;
+    [SerializeField] private int health;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = 7f;
+        health = 100;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -21,6 +23,10 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            anim.SetTrigger("Die");
+        }
         Debug.DrawRay(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1f, Color.red);
     }
 

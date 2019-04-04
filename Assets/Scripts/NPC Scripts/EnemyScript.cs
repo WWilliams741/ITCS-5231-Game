@@ -6,16 +6,22 @@ public class EnemyScript : MonoBehaviour
 {
     public NPCData sourceData;
     [SerializeField] private Animator anim;
+    public int health;
+
+    private void Start()
+    {
+        health = sourceData.vitality;
+    }
 
     public void TakeDamage(int damage)
     {
-        sourceData.vitality -= damage;
-        if(sourceData.vitality <= 0)
+        health -= damage;
+        if(health <= 0)
         {
             anim.SetTrigger("Die");
             GetComponent<Collider>().enabled = false;
         }
         
-        Debug.Log("sourceData.vitality is now: " + sourceData.vitality);
+        Debug.Log("Enemy Health is now: " + health);
     }
 }

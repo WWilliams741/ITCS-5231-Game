@@ -2,32 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    int agility = 5;
     Vector3 movementInput;
-    Rigidbody rb;
-    private bool blocking;
-    [HideInInspector] public int damage = 2;
-    [HideInInspector] public double exp = 0;
-    [HideInInspector] public int level;
+    [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
-    [SerializeField] private int vitality;
+    [SerializeField] Canvas levelUpMenu;
+    [SerializeField] TMPro.TMP_Dropdown levelUpOptions;
+
+    private bool blocking;
+
     private PlayerData data;
+
+    private int vitality;
+    private int strength;
+    private int agility;
+    private double exp;
+    private int level;
 
     // Start is called before the first frame update
     void Start()
     {
         data = SaveGameData.instance.playerData;
-        //agility = data.agility;
-        agility = 5;
-        vitality = data.vitality;
-        damage = data.strength;
-        level = data.level;
-        exp = data.exp;
+        if (data.agility != 0)
+        {
+            //agility = data.agility;
+            agility = data.agility;
+            vitality = data.vitality;
+            strength = data.strength;
+            level = data.level;
+            exp = data.exp;
+        }
+        else
+        {
+            agility = 5;
+            vitality = 50;
+            strength = 2;
+            level = 1;
+            exp = 0;
+        }
         blocking = false;
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -99,13 +115,14 @@ public class PlayerController : MonoBehaviour
     {
         data.agility = agility;
         data.vitality = vitality;
-        data.strength = damage;
+        data.strength = strength;
         data.level = level;
         data.exp = exp;
         SaveGameData.instance.playerData = data;
+        SaveGameData.instance.SaveData();
     }
 
-    public void DealDamage(int damage)
+    public void DealDamage(int strength)
     {
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1.5f);
@@ -115,15 +132,22 @@ public class PlayerController : MonoBehaviour
             EnemyScript hitObject = hit.collider.gameObject.GetComponent<EnemyScript>();
             if(hitObject.tag.Equals("Enemy"))
             {
-                hitObject.TakeDamage(damage);
-                if(hitObject.sourceData.vitality <= 0) //If the enemy dies (health is less than or equals 0)
+                hitObject.TakeDamage(strength);
+                if(hitObject.health <= 0) //If the enemy dies (health is less than or equals 0)
                 {
                     exp += hitObject.sourceData.expDrop; //Add a certain amount to the experience (give experience function)
-                    level = Log3(exp); //Call log2 to update the level and set to a temp level
+                    int tempLevel = Log3(exp);
+                    if (tempLevel > level)
+                    {
+                        levelUpMenu.gameObject.SetActive(true);
+                        Cursor.lockState = CursorLockMode.None;
+                    }
+                    //Call log3 to update the level and set to a temp level
                     //If the temp level is greater than the current level
                     //Show level up screen
                     Debug.Log("Exp is now " + exp);
                     Debug.Log("Level is now " + level);
+                    
                 }
 
             }
@@ -132,7 +156,32 @@ public class PlayerController : MonoBehaviour
 
     public void LevelUp()
     {
-        //   `\(ツ)/`
+        Cursor.lockState = CursorLockMode.Locked;
+        int stat = levelUpOptions.value;
+        switch (stat)
+        {
+            case 0: // Vitality
+                print("vitality updated");
+                vitality++;
+                break;
+            case 1: // Strength
+                print("strength updated");
+                strength++;
+                break;
+            case 2: // Agility
+                if (agility == 10)
+                {
+                    print("agility at max");
+                    return;
+                }
+                print("agility updated");
+                agility++;
+                break;
+        }
+        level++;
+        UpdateStats();
+        // set the levelUp menu to inactive;
+        levelUpMenu.gameObject.SetActive(false);
     }
 
     //Leveling Utility 
@@ -140,4 +189,11 @@ public class PlayerController : MonoBehaviour
     {
         return Mathf.FloorToInt((float)Math.Log(experience, 3));
     }
+
+    /*
+     * 
+     * When leveling up /gaining experience enable levelUp menu and check for agility
+     *     
+     * 
+     */
 }

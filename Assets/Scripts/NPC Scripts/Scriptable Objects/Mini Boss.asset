@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mini Boss
   m_EditorClassIdentifier: 
   name: 
-  vitality: 0
+  vitality: 75
   strength: 0
   agility: 0
   expDrop: 100

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Final Boss
   m_EditorClassIdentifier: 
   name: Mjolnir
-  vitality: 0
+  vitality: 100
   strength: 0
   agility: 0
   expDrop: 500

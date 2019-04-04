@@ -119,10 +119,11 @@ public class PlayerController : MonoBehaviour
                 if(hitObject.sourceData.vitality <= 0) //If the enemy dies (health is less than or equals 0)
                 {
                     exp += hitObject.sourceData.expDrop; //Add a certain amount to the experience (give experience function)
-                    //Call log2 to update the level and set to a temp level
+                    level = Log3(exp); //Call log2 to update the level and set to a temp level
                     //If the temp level is greater than the current level
                     //Show level up screen
                     Debug.Log("Exp is now " + exp);
+                    Debug.Log("Level is now " + level);
                 }
 
             }
@@ -135,8 +136,8 @@ public class PlayerController : MonoBehaviour
     }
 
     //Leveling Utility 
-    public int Log2(double experience)
+    public int Log3(double experience)
     {
-        return Mathf.FloorToInt((float)Math.Log(experience, 2));
+        return Mathf.FloorToInt((float)Math.Log(experience, 3));
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Basic Enemy
   m_EditorClassIdentifier: 
   name: 
-  vitality: 0
+  vitality: 10
   strength: 0
   agility: 0
   expDrop: 10

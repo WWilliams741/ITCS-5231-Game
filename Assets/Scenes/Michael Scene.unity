@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  sourceData: {fileID: 11400000, guid: a7b0ee964657aee498ca41d012c606cc, type: 2}
   anim: {fileID: 70935227}
 --- !u!136 &70935226
 CapsuleCollider:
@@ -282,6 +282,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &309496637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309496639}
+  - component: {fileID: 309496638}
+  m_Layer: 0
+  m_Name: Save Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &309496638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309496637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d55db877c4414d418b06be338aeb7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataPath: 
+  extenstion: .yeet
+  playerData:
+    name: 
+    vitality: 0
+    strength: 0
+    agility: 0
+    exp: 0
+    level: 0
+--- !u!4 &309496639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309496637}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &425982701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -725,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  sourceData: {fileID: 11400000, guid: 1c8be1c245eef2b43aa31548fce8b54c, type: 2}
   anim: {fileID: 815835509}
 --- !u!136 &815835508
 CapsuleCollider:
@@ -1136,8 +1188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddeb8b09e81cb674d9a087f44ca68387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  exp: 0
+  level: 0
   anim: {fileID: 1277605874}
-  health: 0
+  vitality: 0
 --- !u!95 &1277605874 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: cdbe1f03bbff0cc48937570e43aa1815,
@@ -1198,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  sourceData: {fileID: 11400000, guid: 1c8be1c245eef2b43aa31548fce8b54c, type: 2}
   anim: {fileID: 1473995894}
 --- !u!136 &1473995893
 CapsuleCollider:
@@ -1300,6 +1355,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 6517b6a75a2e22c4cad29e455db21126, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 96f5a665400d04f4e86ad2955f8bb17b, type: 2}
     - target: {fileID: 400130, guid: 6517b6a75a2e22c4cad29e455db21126, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.96
@@ -1344,10 +1403,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 6517b6a75a2e22c4cad29e455db21126, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 96f5a665400d04f4e86ad2955f8bb17b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6517b6a75a2e22c4cad29e455db21126, type: 3}
 --- !u!1 &1785603876 stripped
@@ -1368,7 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  sourceData: {fileID: 11400000, guid: a7b0ee964657aee498ca41d012c606cc, type: 2}
   anim: {fileID: 1785603879}
 --- !u!136 &1785603878
 CapsuleCollider:
@@ -1414,7 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  sourceData: {fileID: 11400000, guid: 79e14bb8b9f583a4aae713aaebc3edba, type: 2}
   anim: {fileID: 1836218558}
 --- !u!136 &1836218557
 CapsuleCollider:
@@ -1451,6 +1506,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 62f5604e1e92f1349bc3693b14ad6772, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 96f5a665400d04f4e86ad2955f8bb17b, type: 2}
     - target: {fileID: 400128, guid: 62f5604e1e92f1349bc3693b14ad6772, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.233
@@ -1495,10 +1554,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 62f5604e1e92f1349bc3693b14ad6772, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 96f5a665400d04f4e86ad2955f8bb17b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62f5604e1e92f1349bc3693b14ad6772, type: 3}
 --- !u!1 &1882438860 stripped
@@ -1519,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  sourceData: {fileID: 11400000, guid: 1c8be1c245eef2b43aa31548fce8b54c, type: 2}
   anim: {fileID: 1882438863}
 --- !u!136 &1882438862
 CapsuleCollider:
@@ -1559,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecccce8223d66429960a366f171470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  sourceData: {fileID: 11400000, guid: a7b0ee964657aee498ca41d012c606cc, type: 2}
   anim: {fileID: 2022998214}
 --- !u!136 &2022998213
 CapsuleCollider:

@@ -9,4 +9,5 @@ public class NPCData : ScriptableObject
     public int vitality; //Health
     public int strength; //Damage
     public int agility;  //Speed
+    public int expDrop;  //Experience it gives the player
 }

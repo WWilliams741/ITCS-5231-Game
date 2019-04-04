@@ -5,12 +5,12 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    int agility;
+    int agility = 5;
     Vector3 movementInput;
     Rigidbody rb;
     private bool blocking;
-    [HideInInspector] public int damage;
-    [HideInInspector] public double exp;
+    [HideInInspector] public int damage = 2;
+    [HideInInspector] public double exp = 0;
     [HideInInspector] public int level;
     [SerializeField] Animator anim;
     [SerializeField] private int vitality;
@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         data = SaveGameData.instance.playerData;
-        agility = data.agility;
+        //agility = data.agility;
+        agility = 5;
         vitality = data.vitality;
         damage = data.strength;
         level = data.level;
@@ -111,15 +112,19 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 1.5f))
         {
             Debug.Log("Enemy was hit by raycast");
-            GameObject hitObject = hit.collider.gameObject;
+            EnemyScript hitObject = hit.collider.gameObject.GetComponent<EnemyScript>();
             if(hitObject.tag.Equals("Enemy"))
             {
-                hitObject.GetComponent<EnemyScript>().TakeDamage(damage);
-                //If the enemy dies (health is less than or equals 0)
-                    //Add a certain amount to the experience (give experience function)
+                hitObject.TakeDamage(damage);
+                if(hitObject.sourceData.vitality <= 0) //If the enemy dies (health is less than or equals 0)
+                {
+                    exp += hitObject.sourceData.expDrop; //Add a certain amount to the experience (give experience function)
                     //Call log2 to update the level and set to a temp level
                     //If the temp level is greater than the current level
-                        //Show level up screen
+                    //Show level up screen
+                    Debug.Log("Exp is now " + exp);
+                }
+
             }
         }
     }

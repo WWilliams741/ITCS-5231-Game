@@ -16,3 +16,4 @@ MonoBehaviour:
   vitality: 0
   strength: 0
   agility: 0
+  expDrop: 10

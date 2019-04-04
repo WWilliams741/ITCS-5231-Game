@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494cf81a1bf3d1f42b7856c295468fec, type: 3}
   m_Name: Final Boss
   m_EditorClassIdentifier: 
-  name: 
+  name: Mjolnir
   vitality: 0
   strength: 0
   agility: 0
+  expDrop: 500

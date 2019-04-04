@@ -55,6 +55,5 @@ public class SaveGameData : MonoBehaviour
             playerData = (PlayerData)bf.Deserialize(file);
             file.Close();
         }
-
     }
 }

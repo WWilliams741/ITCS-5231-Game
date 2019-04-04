@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public int health;
+    public NPCData sourceData;
     [SerializeField] private Animator anim;
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if(health <= 0)
+        sourceData.vitality -= damage;
+        if(sourceData.vitality <= 0)
         {
             anim.SetTrigger("Die");
             GetComponent<Collider>().enabled = false;
         }
         
-        Debug.Log("Health is now: " + health);
+        Debug.Log("sourceData.vitality is now: " + sourceData.vitality);
     }
 }

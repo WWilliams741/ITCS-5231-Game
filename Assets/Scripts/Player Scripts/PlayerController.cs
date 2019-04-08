@@ -80,25 +80,22 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Moving", false);
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !anim.GetBool("Attacking"))
             {
                 anim.SetInteger("Attack", UnityEngine.Random.Range(0, 3));
                 anim.SetBool("Attacking", true);
             }
-            if(Input.GetMouseButtonUp(0))
-            {
-                anim.SetBool("Attacking", false);
-            }
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && !anim.GetBool("Attacking"))
             {
                 blocking = true;
                 anim.SetBool("Blocking", blocking);
             }
-            if(Input.GetMouseButtonUp(1))
+            if (Input.GetMouseButtonUp(1))
             {
                 blocking = false;
                 anim.SetBool("Blocking", blocking);
             }
+
         }
     }
 
@@ -188,6 +185,11 @@ public class PlayerController : MonoBehaviour
     public int Log3(double experience)
     {
         return Mathf.FloorToInt((float)Math.Log(experience, 3));
+    }
+
+    public void Attacking()
+    {
+        anim.SetBool("Attacking", false);
     }
 
     /*

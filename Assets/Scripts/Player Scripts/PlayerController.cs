@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     [SerializeField] Canvas levelUpMenu;
-    [SerializeField] TMPro.TMP_Dropdown levelUpOptions;
+    [SerializeField] TMP_Dropdown levelUpOptions;
+    [SerializeField] TextMeshProUGUI agilityText;
+    [SerializeField] TextMeshProUGUI strengthText;
+    [SerializeField] TextMeshProUGUI vitalityText;
 
     private bool blocking;
 
@@ -21,11 +25,17 @@ public class PlayerController : MonoBehaviour
     private int agility;
     private double exp;
     private int level;
+    private bool alive;
 
     // Start is called before the first frame update
     void Start()
     {
         data = SaveGameData.instance.playerData;
+        alive = true;
+        blocking = false;
+        agilityText.text = "";
+        strengthText.text = "";
+        vitalityText.text = "";
         if (data.agility != 0)
         {
             //agility = data.agility;
@@ -43,7 +53,6 @@ public class PlayerController : MonoBehaviour
             level = 1;
             exp = 0;
         }
-        blocking = false;
     }
 
     // Update is called once per frame
@@ -51,6 +60,9 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         AnimatePlayer();
+        agilityText.text = "Agility (Max 10): " + agility;
+        strengthText.text = "Strength: " + strength;
+        vitalityText.text = "Vitality: " + vitality;
         if (Input.GetKeyDown(KeyCode.R))
         {
             anim.SetTrigger("Die");
@@ -59,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        if (Cursor.lockState == CursorLockMode.Locked && !anim.GetBool("Attacking"))
+        if (CanMove())
         {
             movementInput = new Vector3(Input.GetAxisRaw("Horizontal") * agility, rb.velocity.y, Input.GetAxisRaw("Vertical") * agility);
             movementInput = transform.TransformDirection(movementInput);
@@ -137,6 +149,7 @@ public class PlayerController : MonoBehaviour
                     if (tempLevel > level)
                     {
                         levelUpMenu.gameObject.SetActive(true);
+                        Debug.Log("Menu should be shown now");
                         Cursor.lockState = CursorLockMode.None;
                     }
                     //Call log3 to update the level and set to a temp level
@@ -190,6 +203,11 @@ public class PlayerController : MonoBehaviour
     public void Attacking()
     {
         anim.SetBool("Attacking", false);
+    }
+
+    private bool CanMove()
+    {
+        return Cursor.lockState == CursorLockMode.Locked && !(anim.GetBool("Attacking") || blocking) && alive;
     }
 
     /*

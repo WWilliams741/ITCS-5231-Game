@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Cursor.lockState == CursorLockMode.Locked && !anim.GetBool("Attacking"))
         {
-            movementInput = new Vector3(Input.GetAxisRaw("Horizontal") * agility, 0f, Input.GetAxisRaw("Vertical") * agility);
+            movementInput = new Vector3(Input.GetAxisRaw("Horizontal") * agility, rb.velocity.y, Input.GetAxisRaw("Vertical") * agility);
             movementInput = transform.TransformDirection(movementInput);
             rb.velocity = movementInput;
         }

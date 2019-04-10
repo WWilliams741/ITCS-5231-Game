@@ -15,15 +15,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI agilityText;
     [SerializeField] TextMeshProUGUI strengthText;
     [SerializeField] TextMeshProUGUI vitalityText;
+    [SerializeField] Image healthBar;
+    [SerializeField] Image healthBackground;
 
     private bool blocking;
 
     private PlayerData data;
 
     private int vitality;
+    private int maxVitality;
     private int strength;
     private int agility;
     private double exp;
+    private float vitalityPercent;
     private int level;
     private bool alive;
 
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
         data = SaveGameData.instance.playerData;
         alive = true;
         blocking = false;
+        vitalityPercent = 1f;
         agilityText.text = "";
         strengthText.text = "";
         vitalityText.text = "";
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
             //agility = data.agility;
             agility = data.agility;
             vitality = data.vitality;
+            maxVitality = data.vitality;
             strength = data.strength;
             level = data.level;
             exp = data.exp;
@@ -48,7 +54,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             agility = 5;
-            vitality = 50;
+            vitality = 100;
+            maxVitality = 100;
             strength = 2;
             level = 1;
             exp = 0;
@@ -58,14 +65,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(anim.GetBool("Attacking"));
+        vitalityPercent = (float)vitality / maxVitality;
         MovePlayer();
         AnimatePlayer();
         agilityText.text = "Agility (Max 10): " + agility;
         strengthText.text = "Strength: " + strength;
         vitalityText.text = "Vitality: " + vitality;
+        healthBar.fillAmount = vitalityPercent;
         if (Input.GetKeyDown(KeyCode.R))
         {
+            vitality -= 5;
+        }
+
+        if(vitality <= 0)
+        {
+            alive = false;
             anim.SetTrigger("Die");
         }
     }
@@ -169,7 +183,6 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Level is now " + level);
                     
                 }
-
             }
         }
     }
@@ -182,7 +195,10 @@ public class PlayerController : MonoBehaviour
         {
             case 0: // Vitality
                 print("vitality updated");
-                vitality++;
+                vitality += 10;
+                maxVitality += 10;
+                healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
+                healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
                 break;
             case 1: // Strength
                 print("strength updated");

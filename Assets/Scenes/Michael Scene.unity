@@ -2186,6 +2186,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ccc83c8bb6fb54a419eb47fd13a62846, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ccc83c8bb6fb54a419eb47fd13a62846, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ccc83c8bb6fb54a419eb47fd13a62846, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: ccc83c8bb6fb54a419eb47fd13a62846, type: 3}
       propertyPath: m_Controller
       value: 
@@ -3613,6 +3625,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: levelUpMenu
+      value: 
+      objectReference: {fileID: 1601813640}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: levelUpOptions
+      value: 
+      objectReference: {fileID: 725050307}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: agilityText
+      value: 
+      objectReference: {fileID: 118460677}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: strengthText
+      value: 
+      objectReference: {fileID: 885686175}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: vitalityText
+      value: 
+      objectReference: {fileID: 93314689}
     - target: {fileID: 5932763916459342071, guid: 7d0da6118fe6bd242813169cbbab5e30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3668,31 +3705,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: levelUpMenu
-      value: 
-      objectReference: {fileID: 1601813640}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: levelUpOptions
-      value: 
-      objectReference: {fileID: 725050307}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: agilityText
-      value: 
-      objectReference: {fileID: 118460677}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: strengthText
-      value: 
-      objectReference: {fileID: 885686175}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: vitalityText
-      value: 
-      objectReference: {fileID: 93314689}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d0da6118fe6bd242813169cbbab5e30, type: 3}
 --- !u!1001 &6995950767179584034

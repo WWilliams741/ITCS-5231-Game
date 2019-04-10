@@ -78,6 +78,11 @@ public class PlayerController : MonoBehaviour
             movementInput = transform.TransformDirection(movementInput);
             rb.velocity = movementInput;
         }
+		else {
+			movementInput = new Vector3(0.0f,0.0f,0.0f);
+            movementInput = transform.TransformDirection(movementInput);
+            rb.velocity = movementInput;
+		}
     }
     
     void AnimatePlayer()

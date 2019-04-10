@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2681,7 +2681,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473995891}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -3613,6 +3613,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5932763916459828439, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: levelUpMenu
+      value: 
+      objectReference: {fileID: 1601813640}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: levelUpOptions
+      value: 
+      objectReference: {fileID: 725050307}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: agilityText
+      value: 
+      objectReference: {fileID: 118460677}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: strengthText
+      value: 
+      objectReference: {fileID: 885686175}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: vitalityText
+      value: 
+      objectReference: {fileID: 93314689}
     - target: {fileID: 5932763916459342071, guid: 7d0da6118fe6bd242813169cbbab5e30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3668,31 +3698,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: levelUpMenu
-      value: 
-      objectReference: {fileID: 1601813640}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: levelUpOptions
-      value: 
-      objectReference: {fileID: 725050307}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: agilityText
-      value: 
-      objectReference: {fileID: 118460677}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: strengthText
-      value: 
-      objectReference: {fileID: 885686175}
-    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
-        type: 3}
-      propertyPath: vitalityText
-      value: 
-      objectReference: {fileID: 93314689}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d0da6118fe6bd242813169cbbab5e30, type: 3}
 --- !u!1001 &6995950767179584034

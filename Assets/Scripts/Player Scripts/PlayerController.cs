@@ -107,7 +107,10 @@ public class PlayerController : MonoBehaviour
                 }
                 
             }
-
+            //if (Input.GetMouseButtonUp(0))
+            //{
+            //    anim.SetBool("Attacking", false);
+            //}
             if (Input.GetMouseButtonDown(1) && !anim.GetBool("Attacking"))
             {
                 blocking = true;

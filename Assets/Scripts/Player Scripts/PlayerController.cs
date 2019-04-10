@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(anim.GetBool("Attacking"));
         MovePlayer();
         AnimatePlayer();
         agilityText.text = "Agility (Max 10): " + agility;
@@ -94,8 +95,16 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && !anim.GetBool("Attacking"))
             {
-                anim.SetInteger("Attack", UnityEngine.Random.Range(0, 3));
-                anim.SetBool("Attacking", true);
+                if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Attacking"))
+                {
+                    anim.SetInteger("Attack", UnityEngine.Random.Range(0, 3));
+                    anim.SetBool("Attacking", true);
+                }
+                
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                anim.SetBool("Attacking", false);
             }
             if (Input.GetMouseButtonDown(1) && !anim.GetBool("Attacking"))
             {
@@ -209,6 +218,7 @@ public class PlayerController : MonoBehaviour
     {
         return Cursor.lockState == CursorLockMode.Locked && !(anim.GetBool("Attacking") || blocking) && alive;
     }
+
 
     /*
      * 

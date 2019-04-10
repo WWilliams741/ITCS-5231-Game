@@ -2874,7 +2874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1601813638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3678,6 +3678,21 @@ PrefabInstance:
       propertyPath: levelUpOptions
       value: 
       objectReference: {fileID: 725050307}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: agilityText
+      value: 
+      objectReference: {fileID: 118460677}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: strengthText
+      value: 
+      objectReference: {fileID: 885686175}
+    - target: {fileID: 5932763915620681232, guid: 7d0da6118fe6bd242813169cbbab5e30,
+        type: 3}
+      propertyPath: vitalityText
+      value: 
+      objectReference: {fileID: 93314689}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d0da6118fe6bd242813169cbbab5e30, type: 3}
 --- !u!1001 &6995950767179584034

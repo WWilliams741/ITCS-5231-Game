@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             vitality -= 5;
         }
 
-        if(vitality <= 0)
+        if(vitality <= 0 && alive)
         {
             alive = false;
             anim.SetTrigger("Die");

@@ -32,13 +32,15 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+        if (health > 0)
+            anim.SetBool("Moving", true);
         vision = transform.forward;
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1.5f, transform.position.z), vision);
         //Plan on coding for enemy detection of player - different for boss (or just set radius of detection to be whole map lol
         if (Physics.Raycast(ray, out hit, 10f))
         {
-            if (hit.collider.gameObject.tag.Equals("Player"))
+            if (hit.collider.gameObject.tag.Equals("Player") && health > 0)
             {
                 spotted = true;
                 theEnemy = hit.collider.gameObject;
@@ -53,23 +55,29 @@ public class EnemyScript : MonoBehaviour
 
             if (anim.name.Equals("Boss Controller"))
             {
-                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 2f)
+                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f)
                 {
+                    agent.SetDestination(transform.position);
                     anim.SetBool("Attacking", true);
                     anim.SetInteger("Attack", Random.Range(0, 3));
                 }
+                else
+                    anim.SetBool("Attacking", false);
             }
             else
             {
-                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 2f)
+                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f)
                 {
+                    agent.SetDestination(transform.position);
                     anim.SetBool("Attacking", true);
                     anim.SetInteger("Attack", Random.Range(0, 2));
                 }
+                else
+                    anim.SetBool("Attacking", false);
             }
         }
 
-        if (!patrolling && !spotted)
+        if (!patrolling && !spotted && health > 0)
         {
             theDestination = Patrol();
             agent.SetDestination(theDestination);
@@ -85,6 +93,9 @@ public class EnemyScript : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            patrolling = false;
+            spotted = false;
+            anim.SetBool("Moving", false);
             anim.SetTrigger("Die");
             GetComponent<Collider>().enabled = false;
         }
@@ -106,5 +117,25 @@ public class EnemyScript : MonoBehaviour
 
         patrolling = true;
         return newPoint;
+    }
+
+    public void DealDamage()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1.5f);
+        if (Physics.Raycast(ray, out hit, 1.5f))
+        {
+            Debug.Log("Enemy was hit by raycast");
+            PlayerController hitObject = hit.collider.gameObject.GetComponent<PlayerController>();
+            if (hitObject.tag.Equals("Player"))
+            {
+                hitObject.TakeDamage(sourceData.strength);
+            }
+        }
+    }
+
+    public void Attacking()
+    {
+        anim.SetBool("Attacking", false);
     }
 }

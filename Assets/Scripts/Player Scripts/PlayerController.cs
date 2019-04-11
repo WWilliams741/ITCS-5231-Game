@@ -70,12 +70,8 @@ public class PlayerController : MonoBehaviour
         AnimatePlayer();
         agilityText.text = "Agility (Max 10): " + agility;
         strengthText.text = "Strength: " + strength;
-        vitalityText.text = "Vitality: " + vitality;
+        vitalityText.text = "Vitality: " + maxVitality;
         healthBar.fillAmount = vitalityPercent;
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            vitality -= 5;
-        }
 
         if(vitality <= 0 && alive)
         {
@@ -155,7 +151,7 @@ public class PlayerController : MonoBehaviour
         SaveGameData.instance.SaveData();
     }
 
-    public void DealDamage(int strength)
+    public void DealDamage()
     {
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1.5f);
@@ -237,6 +233,26 @@ public class PlayerController : MonoBehaviour
         return Cursor.lockState == CursorLockMode.Locked && !(anim.GetBool("Attacking") || blocking) && alive;
     }
 
+    public void TakeDamage(int damage)
+    {
+        if(blocking && alive)
+        {
+            damage = 0;
+        }
+        vitality -= damage;
+        if (vitality <= 0 && alive)
+        {
+            alive = false;
+            anim.SetTrigger("Die");
+        }
+
+        Debug.Log("Health is now: " + vitality);
+    }
+
+    public int GetVitality()
+    {
+        return vitality;
+    }
 
     /*
      * 

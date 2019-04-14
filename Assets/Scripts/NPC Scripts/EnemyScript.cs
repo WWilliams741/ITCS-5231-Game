@@ -28,12 +28,13 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         startPoint = transform.position;
         vision = transform.forward;
+        anim.SetBool("Moving", true);
     }
 
     private void Update()
     {
-        if (health > 0)
-            anim.SetBool("Moving", true);
+        Debug.Log("Moving: " + anim.GetBool("Moving"));
+
         vision = transform.forward;
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1.5f, transform.position.z), vision);
@@ -47,8 +48,6 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(new Vector3(transform.position.x, 1.5f, transform.position.z), vision * 10f, Color.red);
-
         if (spotted)
         {
             agent.SetDestination(theEnemy.transform.position);
@@ -59,10 +58,14 @@ public class EnemyScript : MonoBehaviour
                 {
                     agent.SetDestination(transform.position);
                     anim.SetBool("Attacking", true);
+                    anim.SetBool("Moving", false);
                     anim.SetInteger("Attack", Random.Range(0, 3));
                 }
-                else
+                else if (health > 0)
+                {
                     anim.SetBool("Attacking", false);
+                    anim.SetBool("Moving", true);
+                }
             }
             else
             {
@@ -70,10 +73,14 @@ public class EnemyScript : MonoBehaviour
                 {
                     agent.SetDestination(transform.position);
                     anim.SetBool("Attacking", true);
+                    anim.SetBool("Moving", false);
                     anim.SetInteger("Attack", Random.Range(0, 2));
                 }
-                else
+                else if(health > 0)
+                {
                     anim.SetBool("Attacking", false);
+                    anim.SetBool("Moving", true);
+                }
             }
         }
 
@@ -99,8 +106,6 @@ public class EnemyScript : MonoBehaviour
             anim.SetTrigger("Die");
             GetComponent<Collider>().enabled = false;
         }
-
-        Debug.Log("Enemy Health is now: " + health);
     }
 
     public Vector3 Patrol()
@@ -125,17 +130,11 @@ public class EnemyScript : MonoBehaviour
         Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1.5f);
         if (Physics.Raycast(ray, out hit, 1.5f))
         {
-            Debug.Log("Enemy was hit by raycast");
             PlayerController hitObject = hit.collider.gameObject.GetComponent<PlayerController>();
             if (hitObject.tag.Equals("Player"))
             {
                 hitObject.TakeDamage(sourceData.strength);
             }
         }
-    }
-
-    public void Attacking()
-    {
-        anim.SetBool("Attacking", false);
     }
 }

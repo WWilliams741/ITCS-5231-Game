@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Moving", false);
             }
 
-            if (Input.GetMouseButtonDown(0) && !anim.GetBool("Attacking"))
+            if (Input.GetMouseButtonDown(0) && !(anim.GetBool("Attacking") || anim.GetBool("Blocking")))
             {
                 if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Attacking"))
                 {
@@ -191,8 +191,8 @@ public class PlayerController : MonoBehaviour
         {
             case 0: // Vitality
                 print("vitality updated");
-                vitality += 10;
                 maxVitality += 10;
+                vitality = maxVitality;
                 healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
                 healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
                 break;
@@ -224,7 +224,6 @@ public class PlayerController : MonoBehaviour
 
     public void Attacking()
     {
-        print("setting attack back to false");
         anim.SetBool("Attacking", false);
     }
 
@@ -245,8 +244,6 @@ public class PlayerController : MonoBehaviour
             alive = false;
             anim.SetTrigger("Die");
         }
-
-        Debug.Log("Health is now: " + vitality);
     }
 
     public int GetVitality()

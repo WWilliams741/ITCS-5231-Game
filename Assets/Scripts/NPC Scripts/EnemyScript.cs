@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
     public NPCData sourceData;
     [SerializeField] private Animator anim;
+    [SerializeField] private Image healthBarImage;
+    [SerializeField] private Canvas enemyCanvas;
+    private float healthPercent;
+    private float maxHealth;
     private NavMeshAgent agent;
     private bool patrolling;
     private Vector3 theDestination;
@@ -29,16 +34,20 @@ public class EnemyScript : MonoBehaviour
         startPoint = transform.position;
         vision = transform.forward;
         anim.SetBool("Moving", true);
+        healthPercent = 1f;
+        maxHealth = sourceData.vitality;
     }
 
     private void Update()
     {
-        Debug.Log("Moving: " + anim.GetBool("Moving"));
-
         vision = transform.forward;
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1.5f, transform.position.z), vision);
         //Plan on coding for enemy detection of player - different for boss (or just set radius of detection to be whole map lol
+
+        healthPercent = health / maxHealth;
+        healthBarImage.fillAmount = healthPercent;
+
         if (Physics.Raycast(ray, out hit, 10f))
         {
             if (hit.collider.gameObject.tag.Equals("Player") && health > 0)
@@ -105,6 +114,7 @@ public class EnemyScript : MonoBehaviour
             anim.SetBool("Moving", false);
             anim.SetTrigger("Die");
             GetComponent<Collider>().enabled = false;
+            enemyCanvas.gameObject.SetActive(false);
         }
     }
 

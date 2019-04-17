@@ -59,6 +59,7 @@ public class EnemyScript : MonoBehaviour
 
         if (spotted)
         {
+			
             agent.SetDestination(theEnemy.transform.position);
 
             if (anim.name.Equals("Boss Controller"))
@@ -75,6 +76,7 @@ public class EnemyScript : MonoBehaviour
                     anim.SetBool("Attacking", false);
                     anim.SetBool("Moving", true);
                 }
+				
             }
             else
             {
@@ -90,7 +92,9 @@ public class EnemyScript : MonoBehaviour
                     anim.SetBool("Attacking", false);
                     anim.SetBool("Moving", true);
                 }
+				
             }
+			
         }
 
         if (!patrolling && !spotted && health > 0)

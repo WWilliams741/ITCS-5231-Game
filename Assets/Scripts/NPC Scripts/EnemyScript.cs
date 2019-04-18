@@ -25,6 +25,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
+        print(anim.GetLayerName(0));
         spotted = false;
         patrolling = false;
         radiusofSatisfaction = 1f;
@@ -40,6 +41,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+        print("Updating bitches");
         vision = transform.forward;
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1.5f, transform.position.z), vision);
@@ -57,42 +59,62 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        if (spotted)
+        if (spotted && health > 0)
         {
-			
-            agent.SetDestination(theEnemy.transform.position);
-
-            if (anim.name.Equals("Boss Controller"))
+            if (Vector3.Distance(transform.position, theEnemy.transform.position) > 1.5f)
             {
-                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f)
-                {
-                    agent.SetDestination(transform.position);
-                    anim.SetBool("Attacking", true);
-                    anim.SetBool("Moving", false);
-                    anim.SetInteger("Attack", Random.Range(0, 3));
-                }
-                else if (health > 0)
-                {
-                    anim.SetBool("Attacking", false);
-                    anim.SetBool("Moving", true);
-                }
-				
+                agent.SetDestination(theEnemy.transform.position);
+                anim.SetBool("Moving", true);
             }
             else
             {
-                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f)
+                agent.SetDestination(transform.position);
+                anim.SetBool("Moving", false);
+            }
+
+            if (anim.GetLayerName(0).Equals("Boss"))
+            {
+                //print("we are a boss bitches");
+                //anim.SetBool("Attacking", true);
+                //anim.SetInteger("Attack", Random.Range(0, 3));
+                //StartCoroutine(resetAttack());
+                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f&& !anim.GetBool("Attacking"))
                 {
-                    agent.SetDestination(transform.position);
                     anim.SetBool("Attacking", true);
-                    anim.SetBool("Moving", false);
-                    anim.SetInteger("Attack", Random.Range(0, 2));
+                    anim.SetInteger("Attack", Random.Range(0, 3));
+                    Debug.Log("starting coroutine");
+                    StartCoroutine(resetAttack());
                 }
-                else if(health > 0)
+                else if (!anim.GetBool("Attacking"))
                 {
-                    anim.SetBool("Attacking", false);
                     anim.SetBool("Moving", true);
                 }
-				
+                //else if (health > 0 && !anim.GetBool("Attacking"))
+                //{
+                //    anim.SetBool("Attacking", false);
+                //    anim.SetBool("Moving", true);
+                //}
+
+            }
+            else
+            {
+                //print("we are not a boss bitches");
+                //if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5 && !anim.GetBool("Attacking"))
+                //{
+                //    anim.SetBool("Attacking", true);
+                //    anim.SetBool("Moving", false);
+                //    anim.SetInteger("Attack", Random.Range(0, 2));
+                //}
+                //else if (!anim.GetBool("Attacking"))
+                //{
+                //    anim.SetBool("Moving", true);
+                //}
+                //else if(health > 0)
+                //{
+                //    anim.SetBool("Attacking", false);
+                //    anim.SetBool("Moving", true);
+                //}
+
             }
 			
         }
@@ -150,5 +172,12 @@ public class EnemyScript : MonoBehaviour
                 hitObject.TakeDamage(sourceData.strength);
             }
         }
+    }
+
+    public IEnumerator resetAttack()
+    {
+        yield return null;
+
+        anim.SetBool("Attacking", false);
     }
 }

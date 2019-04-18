@@ -15,5 +15,5 @@ MonoBehaviour:
   name: stuff1
   vitality: 10
   strength: 10
-  agility: 10
+  agility: 3
   expDrop: 10

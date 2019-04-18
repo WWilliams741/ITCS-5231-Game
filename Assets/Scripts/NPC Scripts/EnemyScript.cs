@@ -78,17 +78,16 @@ public class EnemyScript : MonoBehaviour
                 //anim.SetBool("Attacking", true);
                 //anim.SetInteger("Attack", Random.Range(0, 3));
                 //StartCoroutine(resetAttack());
-                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f&& !anim.GetBool("Attacking"))
+                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f && !anim.GetBool("Attacking"))
                 {
                     anim.SetBool("Attacking", true);
                     anim.SetInteger("Attack", Random.Range(0, 3));
-                    Debug.Log("starting coroutine");
                     StartCoroutine(resetAttack());
                 }
-                else if (!anim.GetBool("Attacking"))
-                {
-                    anim.SetBool("Moving", true);
-                }
+                //else if (!anim.GetBool("Attacking"))
+                //{
+                //    anim.SetBool("Moving", true);
+                //}
                 //else if (health > 0 && !anim.GetBool("Attacking"))
                 //{
                 //    anim.SetBool("Attacking", false);
@@ -98,20 +97,14 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                //print("we are not a boss bitches");
-                //if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5 && !anim.GetBool("Attacking"))
-                //{
-                //    anim.SetBool("Attacking", true);
-                //    anim.SetBool("Moving", false);
-                //    anim.SetInteger("Attack", Random.Range(0, 2));
-                //}
+                if (Vector3.Distance(transform.position, theEnemy.transform.position) <= 1.5f && !anim.GetBool("Attacking"))
+                {
+                    anim.SetBool("Attacking", true);
+                    anim.SetInteger("Attack", Random.Range(0, 2));
+                    StartCoroutine(resetAttack());
+                }
                 //else if (!anim.GetBool("Attacking"))
                 //{
-                //    anim.SetBool("Moving", true);
-                //}
-                //else if(health > 0)
-                //{
-                //    anim.SetBool("Attacking", false);
                 //    anim.SetBool("Moving", true);
                 //}
 

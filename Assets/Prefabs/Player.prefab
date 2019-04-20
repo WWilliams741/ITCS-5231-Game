@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 5932763915620681232}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,6 +280,11 @@ MonoBehaviour:
   anim: {fileID: 5932763916450305683}
   levelUpMenu: {fileID: 0}
   levelUpOptions: {fileID: 0}
+  agilityText: {fileID: 0}
+  strengthText: {fileID: 0}
+  vitalityText: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthBackground: {fileID: 0}
 --- !u!1 &5932763916459828449
 GameObject:
   m_ObjectHideFlags: 0

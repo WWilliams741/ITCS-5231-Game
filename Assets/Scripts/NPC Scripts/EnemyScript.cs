@@ -28,7 +28,7 @@ public class EnemyScript : MonoBehaviour
         spotted = false;
         patrolling = false;
         radiusofSatisfaction = 1f;
-        radiusofPatrol = 20f;
+        radiusofPatrol = 70f;
         health = sourceData.vitality;
         agent = GetComponent<NavMeshAgent>();
         startPoint = transform.position;

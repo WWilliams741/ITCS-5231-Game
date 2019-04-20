@@ -25,7 +25,6 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
-        print(anim.GetLayerName(0));
         spotted = false;
         patrolling = false;
         radiusofSatisfaction = 1f;
@@ -41,7 +40,6 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        print("Updating bitches");
         vision = transform.forward;
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1.5f, transform.position.z), vision);

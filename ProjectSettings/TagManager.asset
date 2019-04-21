@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Boss Area
   - Final Boss Area
+  - Gateway
+  - Boss Gateway
   layers:
   - Default
   - TransparentFX

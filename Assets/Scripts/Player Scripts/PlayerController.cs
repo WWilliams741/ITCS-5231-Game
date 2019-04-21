@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.UI;
 using TMPro;
@@ -134,10 +135,14 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Scene Transition")
+        if(other.gameObject.tag == "Gateway")
         {
-            //Set the players position
-            //
+            SceneManager.LoadScene("Forest Scene");
+        }
+		
+		if(other.gameObject.tag == "Boss Gateway")
+        {
+            SceneManager.LoadScene("Boss Scene");
         }
 		
 		if(other.gameObject.tag == "Boss Area")

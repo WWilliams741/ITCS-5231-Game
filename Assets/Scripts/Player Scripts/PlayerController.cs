@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI vitalityText;
     [SerializeField] Image healthBar;
     [SerializeField] Image healthBackground;
+	[SerializeField] MusicManager sounds;
 
     private bool blocking;
 
@@ -138,6 +139,16 @@ public class PlayerController : MonoBehaviour
             //Set the players position
             //
         }
+		
+		if(other.gameObject.tag == "Boss Area")
+		{
+			sounds.SetMiniBossMusic();
+		}
+		
+		if(other.gameObject.tag == "Final Boss Area")
+		{
+			sounds.SetFinalBossMusic();
+		}
     }
 
     public void UpdateStats()

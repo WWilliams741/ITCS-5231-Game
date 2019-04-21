@@ -28,7 +28,7 @@ public class EnemyScript : MonoBehaviour
         spotted = false;
         patrolling = false;
         radiusofSatisfaction = 1f;
-        radiusofPatrol = 70f;
+        radiusofPatrol = 10f;
         health = sourceData.vitality;
         agent = GetComponent<NavMeshAgent>();
         startPoint = transform.position;
@@ -137,15 +137,10 @@ public class EnemyScript : MonoBehaviour
 
     public Vector3 Patrol()
     {
-        Vector2 circlePoint = Random.insideUnitCircle * 5;
-        Vector3 newPoint = new Vector3(circlePoint.x, gameObject.transform.position.y, circlePoint.y);
-
-        while (Vector3.Distance(newPoint, startPoint) > radiusofPatrol)
-        {
-            circlePoint = Random.insideUnitCircle * 5;
-            newPoint = new Vector3(circlePoint.x, gameObject.transform.position.y, circlePoint.y);
-
-        }
+        Vector2 circlePoint = Random.insideUnitCircle * radiusofPatrol;
+        Vector3 newPoint = new Vector3(startPoint.x, transform.position.y, startPoint.z);
+        newPoint.x += circlePoint.x;
+        newPoint.z += circlePoint.y;
 
         patrolling = true;
         return newPoint;

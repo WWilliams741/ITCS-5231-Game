@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour 
 {
     Vector3 movementInput;
     [SerializeField] Rigidbody rb;

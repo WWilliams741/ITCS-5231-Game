@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private Canvas enemyCanvas;
+    [SerializeField] private PlayerController Player;
     private float healthPercent;
     private float maxHealth;
     private NavMeshAgent agent;
@@ -165,5 +166,11 @@ public class EnemyScript : MonoBehaviour
         yield return null;
 
         anim.SetBool("Attacking", false);
+    }
+
+    public void BossIsDead(int value) {
+        if (value == 1) {
+            Player.setBossDead(true);
+        }
     }
 }

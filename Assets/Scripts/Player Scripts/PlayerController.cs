@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
     Vector3 movementInput;
     [SerializeField] Rigidbody rb;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI vitalityText;
     [SerializeField] Image healthBar;
     [SerializeField] Image healthBackground;
-	[SerializeField] MusicManager sounds;
+    [SerializeField] MusicManager sounds;
 
     private bool blocking;
 
@@ -33,9 +33,11 @@ public class PlayerController : MonoBehaviour
     private int level;
     private bool alive;
 
+    private bool canSave;
+    public bool bossDead;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         data = SaveGameData.instance.playerData;
         alive = true;
         blocking = false;
@@ -43,8 +45,7 @@ public class PlayerController : MonoBehaviour
         agilityText.text = "";
         strengthText.text = "";
         vitalityText.text = "";
-        if (data.agility != 0)
-        {
+        if (data.agility != 0) {
             //agility = data.agility;
             agility = data.agility;
             vitality = data.vitality;
@@ -52,9 +53,7 @@ public class PlayerController : MonoBehaviour
             strength = data.strength;
             level = data.level;
             exp = data.exp;
-        }
-        else
-        {
+        } else {
             agility = 5;
             vitality = 100;
             maxVitality = 100;
@@ -62,11 +61,13 @@ public class PlayerController : MonoBehaviour
             level = 1;
             exp = 0;
         }
+
+        canSave = false;
+        bossDead = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         vitalityPercent = (float)vitality / maxVitality;
         MovePlayer();
         AnimatePlayer();
@@ -75,57 +76,49 @@ public class PlayerController : MonoBehaviour
         vitalityText.text = "Vitality: " + maxVitality;
         healthBar.fillAmount = vitalityPercent;
 
-        if(vitality <= 0 && alive)
-        {
+        if (vitality <= 0 && alive) {
             alive = false;
             anim.SetTrigger("Die");
         }
+
+        if (canSave && Input.GetKeyDown(KeyCode.E)) {
+            print("saving");
+            SaveGameData.instance.SaveData();
+        }
     }
 
-    void MovePlayer()
-    {
-        if (CanMove())
-        {
+    void MovePlayer() {
+        if (CanMove()) {
             movementInput = new Vector3(Input.GetAxisRaw("Horizontal") * agility, rb.velocity.y, Input.GetAxisRaw("Vertical") * agility);
             movementInput = transform.TransformDirection(movementInput);
             rb.velocity = movementInput;
-        }
-		else {
-			movementInput = new Vector3(0.0f,0.0f,0.0f);
+        } else {
+            movementInput = new Vector3(0.0f, 0.0f, 0.0f);
             movementInput = transform.TransformDirection(movementInput);
             rb.velocity = movementInput;
-		}
+        }
     }
-    
-    void AnimatePlayer()
-    {
-        if(Cursor.lockState == CursorLockMode.Locked)
-        {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-            {
+
+    void AnimatePlayer() {
+        if (Cursor.lockState == CursorLockMode.Locked) {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
                 anim.SetBool("Moving", true);
-            }
-            else
-            {
+            } else {
                 anim.SetBool("Moving", false);
             }
 
-            if (Input.GetMouseButtonDown(0) && !(anim.GetBool("Attacking") || anim.GetBool("Blocking")))
-            {
-                if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Attacking"))
-                {
+            if (Input.GetMouseButtonDown(0) && !(anim.GetBool("Attacking") || anim.GetBool("Blocking"))) {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attacking")) {
                     anim.SetInteger("Attack", UnityEngine.Random.Range(0, 3));
                     anim.SetBool("Attacking", true);
                 }
-                
+
             }
-            if (Input.GetMouseButtonDown(1) && !anim.GetBool("Attacking"))
-            {
+            if (Input.GetMouseButtonDown(1) && !anim.GetBool("Attacking")) {
                 blocking = true;
                 anim.SetBool("Blocking", blocking);
             }
-            if (Input.GetMouseButtonUp(1))
-            {
+            if (Input.GetMouseButtonUp(1)) {
                 blocking = false;
                 anim.SetBool("Blocking", blocking);
             }
@@ -133,31 +126,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Gateway")
-        {
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "Gateway" && bossDead) {
+            SaveGameData.instance.SaveData();
             SceneManager.LoadScene("Forest Scene");
         }
-		
-		if(other.gameObject.tag == "Boss Gateway")
-        {
+
+        if (other.gameObject.tag == "Boss Gateway") {
+            SaveGameData.instance.SaveData();
             SceneManager.LoadScene("Boss Scene");
         }
-		
-		if(other.gameObject.tag == "Boss Area")
-		{
-			sounds.SetMiniBossMusic();
-		}
-		
-		if(other.gameObject.tag == "Final Boss Area")
-		{
-			sounds.SetFinalBossMusic();
-		}
+
+        if (other.gameObject.tag == "Boss Area") {
+            sounds.SetMiniBossMusic();
+        }
+
+        if (other.gameObject.tag == "Final Boss Area") {
+            sounds.SetFinalBossMusic();
+        }
+
+        if (other.gameObject.tag == "Save Point") {
+            print("setting save to true");
+            canSave = true;
+        }
     }
 
-    public void UpdateStats()
-    {
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "Save Point") {
+            print("setting save to false");
+            canSave = false;
+        }
+    }
+
+    public void UpdateStats() {
         data.agility = agility;
         data.vitality = vitality;
         data.strength = strength;
@@ -167,23 +168,19 @@ public class PlayerController : MonoBehaviour
         SaveGameData.instance.SaveData();
     }
 
-    public void DealDamage()
-    {
+    public void DealDamage() {
         RaycastHit hit;
         Ray ray = new Ray(new Vector3(transform.position.x, 1f, transform.position.z), transform.forward * 1.5f);
-        if(Physics.Raycast(ray, out hit, 1.5f))
-        {
+        if (Physics.Raycast(ray, out hit, 1.5f)) {
             Debug.Log("Enemy was hit by raycast");
             EnemyScript hitObject = hit.collider.gameObject.GetComponent<EnemyScript>();
-            if(hitObject.tag.Equals("Enemy"))
-            {
+            if (hitObject.tag.Equals("Enemy")) {
                 hitObject.TakeDamage(strength);
-                if(hitObject.health <= 0) //If the enemy dies (health is less than or equals 0)
+                if (hitObject.health <= 0) //If the enemy dies (health is less than or equals 0)
                 {
                     exp += hitObject.sourceData.expDrop; //Add a certain amount to the experience (give experience function)
                     int tempLevel = Log3(exp);
-                    if (tempLevel > level)
-                    {
+                    if (tempLevel > level) {
                         levelUpMenu.gameObject.SetActive(true);
                         Debug.Log("Menu should be shown now");
                         Cursor.lockState = CursorLockMode.None;
@@ -193,38 +190,35 @@ public class PlayerController : MonoBehaviour
                     //Show level up screen
                     Debug.Log("Exp is now " + exp);
                     Debug.Log("Level is now " + level);
-                    
+
                 }
             }
         }
     }
 
-    public void LevelUp()
-    {
+    public void LevelUp() {
         Cursor.lockState = CursorLockMode.Locked;
         int stat = levelUpOptions.value;
-        switch (stat)
-        {
+        switch (stat) {
             case 0: // Vitality
-                print("vitality updated");
-                maxVitality += 10;
-                vitality = maxVitality;
-                healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
-                healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
-                break;
+            print("vitality updated");
+            maxVitality += 10;
+            vitality = maxVitality;
+            healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
+            healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
+            break;
             case 1: // Strength
-                print("strength updated");
-                strength++;
-                break;
+            print("strength updated");
+            strength++;
+            break;
             case 2: // Agility
-                if (agility == 10)
-                {
-                    print("agility at max");
-                    return;
-                }
-                print("agility updated");
-                agility++;
-                break;
+            if (agility == 10) {
+                print("agility at max");
+                return;
+            }
+            print("agility updated");
+            agility++;
+            break;
         }
         level++;
         UpdateStats();
@@ -233,38 +227,39 @@ public class PlayerController : MonoBehaviour
     }
 
     //Leveling Utility 
-    public int Log3(double experience)
-    {
+    public int Log3(double experience) {
         return Mathf.FloorToInt((float)Math.Log(experience, 3));
     }
 
-    public void Attacking()
-    {
+    public void Attacking() {
         anim.SetBool("Attacking", false);
     }
 
-    private bool CanMove()
-    {
+    private bool CanMove() {
         return Cursor.lockState == CursorLockMode.Locked && !(anim.GetBool("Attacking") || blocking) && alive;
     }
 
-    public void TakeDamage(int damage)
-    {
-        if(blocking && alive)
-        {
+    public void TakeDamage(int damage) {
+        if (blocking && alive) {
             damage = 0;
         }
         vitality -= damage;
-        if (vitality <= 0 && alive)
-        {
+        if (vitality <= 0 && alive) {
             alive = false;
             anim.SetTrigger("Die");
         }
     }
 
-    public int GetVitality()
-    {
+    public int GetVitality() {
         return vitality;
+    }
+
+    public bool BossDead() {
+        return bossDead;
+    }
+
+    public void setBossDead(bool _bossDead) {
+        bossDead = _bossDead;
     }
 
     /*

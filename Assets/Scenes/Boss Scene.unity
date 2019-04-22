@@ -366,6 +366,7 @@ MonoBehaviour:
   anim: {fileID: 70935227}
   healthBarImage: {fileID: 2135132944}
   enemyCanvas: {fileID: 788401496}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &70935226
 CapsuleCollider:
@@ -2891,6 +2892,7 @@ MonoBehaviour:
   anim: {fileID: 815835509}
   healthBarImage: {fileID: 1629512199}
   enemyCanvas: {fileID: 653292839}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &815835508
 CapsuleCollider:
@@ -4881,6 +4883,7 @@ MonoBehaviour:
   anim: {fileID: 1473995894}
   healthBarImage: {fileID: 664688521}
   enemyCanvas: {fileID: 2038150958}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &1473995893
 CapsuleCollider:
@@ -5720,6 +5723,7 @@ MonoBehaviour:
   anim: {fileID: 1785603879}
   healthBarImage: {fileID: 874706918}
   enemyCanvas: {fileID: 983993438}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &1785603878
 CapsuleCollider:
@@ -5939,6 +5943,7 @@ MonoBehaviour:
   anim: {fileID: 1836218558}
   healthBarImage: {fileID: 1429682917}
   enemyCanvas: {fileID: 1977384466}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &1836218557
 CapsuleCollider:
@@ -6148,6 +6153,7 @@ MonoBehaviour:
   anim: {fileID: 1882438863}
   healthBarImage: {fileID: 189120346}
   enemyCanvas: {fileID: 1367410946}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &1882438862
 CapsuleCollider:
@@ -6334,6 +6340,7 @@ MonoBehaviour:
   anim: {fileID: 2022998214}
   healthBarImage: {fileID: 1810429804}
   enemyCanvas: {fileID: 366531455}
+  Player: {fileID: 0}
   health: 0
 --- !u!136 &2022998213
 CapsuleCollider:
@@ -7009,7 +7016,7 @@ PrefabInstance:
     - target: {fileID: 5932763916459342071, guid: 7d0da6118fe6bd242813169cbbab5e30,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 152.3
+      value: -51
       objectReference: {fileID: 0}
     - target: {fileID: 5932763916459342071, guid: 7d0da6118fe6bd242813169cbbab5e30,
         type: 3}

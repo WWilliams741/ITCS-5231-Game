@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("Forest Scene");
         }
 
-        if (other.gameObject.tag == "Boss Gateway") {
+        if (other.gameObject.tag == "Boss Gateway" && bossDead) {
             SaveGameData.instance.SaveData();
             SceneManager.LoadScene("Boss Scene");
         }

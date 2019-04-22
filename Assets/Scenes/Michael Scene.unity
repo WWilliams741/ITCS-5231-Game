@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1993,6 +1993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 1060710170}
   clip: {fileID: 8300000, guid: cc976d793e496084d9ba9980e5911ead, type: 3}
+  miniBossClip: {fileID: 0}
+  finalBossClip: {fileID: 0}
 --- !u!65 &1060710172
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2995,7 +2997,7 @@ PrefabInstance:
     - target: {fileID: 640481138983867824, guid: 9a8d27d5844a15a43bba8eeb8345285f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 640481138984290704, guid: 9a8d27d5844a15a43bba8eeb8345285f,
         type: 3}
@@ -3079,7 +3081,7 @@ PrefabInstance:
     - target: {fileID: 2415836694228114595, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2415836694228336771, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
         type: 3}
@@ -3163,7 +3165,7 @@ PrefabInstance:
     - target: {fileID: 3175328064503553803, guid: b0a02eda8736b654baa9b3af8c1448c3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175328064504038187, guid: b0a02eda8736b654baa9b3af8c1448c3,
         type: 3}
@@ -3247,7 +3249,7 @@ PrefabInstance:
     - target: {fileID: 4194467466737373071, guid: ed8ff2e6704b9124fb88fe864d0352cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4194467466737865647, guid: ed8ff2e6704b9124fb88fe864d0352cd,
         type: 3}
@@ -3445,7 +3447,7 @@ PrefabInstance:
     - target: {fileID: 6444433233435931675, guid: 4fa6f2ef299a5394dacf7d7968d4966f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6444433233435961403, guid: 4fa6f2ef299a5394dacf7d7968d4966f,
         type: 3}
@@ -3598,7 +3600,7 @@ PrefabInstance:
     - target: {fileID: 7917437262126227564, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7917437262126529612, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
         type: 3}

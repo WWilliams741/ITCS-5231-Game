@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6444433233435961403
 Transform:
   m_ObjectHideFlags: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   anim: {fileID: 6444433233428530783}
   healthBarImage: {fileID: 6444433232663256256}
   enemyCanvas: {fileID: 6444433234158464854}
+  Player: {fileID: 0}
   health: 0
 --- !u!195 &6444433233024737905
 NavMeshAgent:

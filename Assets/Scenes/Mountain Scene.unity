@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,6 +189,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1001 &13120469
@@ -5676,6 +5681,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1001 &361016419
@@ -5755,6 +5765,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1 &429015892
@@ -6008,6 +6023,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1 &452890586
@@ -6161,6 +6181,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 6444433234158464853, guid: 4fa6f2ef299a5394dacf7d7968d4966f,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa6f2ef299a5394dacf7d7968d4966f, type: 3}
 --- !u!1 &536749027
@@ -6314,6 +6339,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1 &618077634
@@ -6777,6 +6807,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1 &753818214
@@ -7213,6 +7248,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1 &939403190
@@ -7495,6 +7535,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!114 &977900674 stripped
@@ -7658,6 +7703,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1 &1252653563
@@ -7842,16 +7892,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
-        type: 3}
-      propertyPath: enemyHealthBar
-      value: 
-      objectReference: {fileID: 1045684167}
     - target: {fileID: 7917437261211912683, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
         type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1 &1376640924
@@ -8096,6 +8146,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1001 &1426021223
@@ -8175,6 +8230,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 640481137972709321, guid: 9a8d27d5844a15a43bba8eeb8345285f,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a8d27d5844a15a43bba8eeb8345285f, type: 3}
 --- !u!1 &1451329131
@@ -8256,7 +8316,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 977900674}
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -8383,6 +8443,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1001 &1498020499
@@ -8462,6 +8527,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1001 &1528148436
@@ -8541,6 +8611,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1 &1643949694
@@ -8903,6 +8978,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1001 &1831420293
@@ -8982,6 +9062,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1001 &1895991215
@@ -9061,6 +9146,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1001 &1969107533
@@ -9140,6 +9230,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 6444433234158464853, guid: 4fa6f2ef299a5394dacf7d7968d4966f,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa6f2ef299a5394dacf7d7968d4966f, type: 3}
 --- !u!1001 &1969498324
@@ -9219,6 +9314,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 7917437261211912693, guid: f2dfeed4c4bf41d42bb6d1bc0821d274,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dfeed4c4bf41d42bb6d1bc0821d274, type: 3}
 --- !u!1001 &1999486233
@@ -9293,6 +9393,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 6444433234158464853, guid: 4fa6f2ef299a5394dacf7d7968d4966f,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa6f2ef299a5394dacf7d7968d4966f, type: 3}
 --- !u!1 &2052043997
@@ -9534,6 +9639,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 2415836692820027510, guid: d5b8a5f734d2d4c4995ea3b5166a16c2,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b8a5f734d2d4c4995ea3b5166a16c2, type: 3}
 --- !u!1 &2117272177
@@ -9773,5 +9883,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 977900674}
+    - target: {fileID: 6444433234158464853, guid: 4fa6f2ef299a5394dacf7d7968d4966f,
+        type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 1045684167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa6f2ef299a5394dacf7d7968d4966f, type: 3}

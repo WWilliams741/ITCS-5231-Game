@@ -184,6 +184,7 @@ public class PlayerController : MonoBehaviour
                         levelUpMenu.gameObject.SetActive(true);
                         Debug.Log("Menu should be shown now");
                         Cursor.lockState = CursorLockMode.None;
+                        //Time.timeScale = 0.00001f;
                     }
                     //Call log3 to update the level and set to a temp level
                     //If the temp level is greater than the current level
@@ -201,29 +202,30 @@ public class PlayerController : MonoBehaviour
         int stat = levelUpOptions.value;
         switch (stat) {
             case 0: // Vitality
-            print("vitality updated");
-            maxVitality += 10;
-            vitality = maxVitality;
-            healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
-            healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
-            break;
+                print("vitality updated");
+                maxVitality += 10;
+                healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
+                healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
+                break;
             case 1: // Strength
-            print("strength updated");
-            strength++;
-            break;
+                print("strength updated");
+                strength++;
+                break;
             case 2: // Agility
-            if (agility == 10) {
-                print("agility at max");
-                return;
-            }
-            print("agility updated");
-            agility++;
-            break;
+                if (agility == 10) {
+                    print("agility at max");
+                    return;
+                }
+                print("agility updated");
+                agility++;
+                break;
         }
+        vitality = maxVitality;
         level++;
         UpdateStats();
         // set the levelUp menu to inactive;
         levelUpMenu.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     //Leveling Utility 

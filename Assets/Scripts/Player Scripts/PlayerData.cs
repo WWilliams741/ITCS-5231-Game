@@ -15,6 +15,9 @@ public class PlayerData
     public double exp;
     public int level;
 
+    public float[] position = new float[3];
+    public string scene;
+
     public PlayerData(string path)
     {
         fileName = path;

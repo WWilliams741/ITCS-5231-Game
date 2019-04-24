@@ -26,6 +26,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
+        theEnemy = GameObject.FindGameObjectWithTag("Player");
         spotted = false;
         patrolling = false;
         radiusofSatisfaction = 1f;
@@ -37,6 +38,7 @@ public class EnemyScript : MonoBehaviour
         anim.SetBool("Moving", true);
         healthPercent = 1f;
         maxHealth = sourceData.vitality;
+        CanvasScript.SetCamera(Camera.main);
     }
 
     private void Update()
@@ -108,7 +110,6 @@ public class EnemyScript : MonoBehaviour
                 //}
 
             }
-			
         }
 
         if (!patrolling && !spotted && health > 0)
@@ -118,6 +119,11 @@ public class EnemyScript : MonoBehaviour
         }
         else if (Vector3.Distance(theDestination, transform.position) <= radiusofSatisfaction)
         {
+            patrolling = false;
+        }
+
+        if (theEnemy.gameObject.GetComponent<PlayerController>().anim.GetBool("Attacking") && Vector3.Distance(theEnemy.gameObject.transform.position, transform.position) < 10f) {
+            spotted = true;
             patrolling = false;
         }
     }
@@ -170,7 +176,7 @@ public class EnemyScript : MonoBehaviour
 
     public void BossIsDead(int value) {
         if (value == 1) {
-            Player.setBossDead(true);
+            theEnemy.gameObject.GetComponent<PlayerController>().setBossDead(true);
         }
     }
 }

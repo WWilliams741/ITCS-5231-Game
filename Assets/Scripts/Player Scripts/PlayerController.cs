@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 movementInput;
     [SerializeField] Rigidbody rb;
-    [SerializeField] Animator anim;
+    [SerializeField] public Animator anim;
     [SerializeField] Canvas levelUpMenu;
     [SerializeField] TMP_Dropdown levelUpOptions;
     [SerializeField] TextMeshProUGUI agilityText;
@@ -36,8 +36,20 @@ public class PlayerController : MonoBehaviour
     private bool canSave;
     public bool bossDead;
 
+    public static PlayerController instance;
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start() {
+
         data = SaveGameData.instance.playerData;
         alive = true;
         blocking = false;
@@ -46,6 +58,7 @@ public class PlayerController : MonoBehaviour
         strengthText.text = "";
         vitalityText.text = "";
         if (data.agility != 0) {
+            StartCoroutine(loadCorrectScene());
             //agility = data.agility;
             agility = data.agility;
             vitality = data.vitality;
@@ -53,6 +66,7 @@ public class PlayerController : MonoBehaviour
             strength = data.strength;
             level = data.level;
             exp = data.exp;
+            transform.position = new Vector3 (data.position[0], data.position[1], data.position[2]);
         } else {
             agility = 5;
             vitality = 100;
@@ -84,7 +98,7 @@ public class PlayerController : MonoBehaviour
         if (canSave && Input.GetKeyDown(KeyCode.E)) {
             print("saving");
             vitality = maxVitality;
-            SaveGameData.instance.SaveData();
+            UpdateStats();
         }
     }
 
@@ -134,6 +148,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (other.gameObject.tag == "Boss Gateway" && bossDead) {
+            print("boss is dead");
             SaveGameData.instance.SaveData();
             SceneManager.LoadScene("Boss Scene");
         }
@@ -165,6 +180,11 @@ public class PlayerController : MonoBehaviour
         data.strength = strength;
         data.level = level;
         data.exp = exp;
+        data.position[0] = transform.position.x;
+        data.position[1] = transform.position.y;
+        data.position[2] = transform.position.z;
+        data.scene = SceneManager.GetActiveScene().name;
+        print(SceneManager.GetActiveScene().name);
         SaveGameData.instance.playerData = data;
         SaveGameData.instance.SaveData();
     }
@@ -185,7 +205,7 @@ public class PlayerController : MonoBehaviour
                         levelUpMenu.gameObject.SetActive(true);
                         Debug.Log("Menu should be shown now");
                         Cursor.lockState = CursorLockMode.None;
-                        //Time.timeScale = 0.00001f;
+                        Time.timeScale = 0;
                     }
                     //Call log3 to update the level and set to a temp level
                     //If the temp level is greater than the current level
@@ -265,10 +285,9 @@ public class PlayerController : MonoBehaviour
         bossDead = _bossDead;
     }
 
-    /*
-     * 
-     * When leveling up /gaining experience enable levelUp menu and check for agility
-     *     
-     * 
-     */
+   IEnumerator loadCorrectScene() {
+        SceneManager.LoadScene(data.scene);
+        yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(data.scene));
+    }
 }

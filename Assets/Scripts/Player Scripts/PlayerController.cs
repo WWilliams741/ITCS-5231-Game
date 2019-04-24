@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
         if (canSave && Input.GetKeyDown(KeyCode.E)) {
             print("saving");
+            vitality = maxVitality;
             SaveGameData.instance.SaveData();
         }
     }

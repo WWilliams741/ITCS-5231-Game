@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
@@ -131,7 +132,10 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && transform.gameObject.tag.Equals("Final Boss")) {
+            goToCredits();
+        }
+        else if (health <= 0)
         {
             patrolling = false;
             spotted = false;
@@ -178,5 +182,11 @@ public class EnemyScript : MonoBehaviour
         if (value == 1) {
             theEnemy.gameObject.GetComponent<PlayerController>().setBossDead(true);
         }
+    }
+
+    public IEnumerator goToCredits() {
+        SceneManager.LoadScene("Credits");
+        yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Credits"));
     }
 }

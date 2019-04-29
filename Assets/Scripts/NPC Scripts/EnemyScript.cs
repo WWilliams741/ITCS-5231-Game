@@ -133,7 +133,8 @@ public class EnemyScript : MonoBehaviour
     {
         health -= damage;
         if (health <= 0 && transform.gameObject.tag.Equals("Final Boss")) {
-            goToCredits();
+            print("going to credits");
+            StartCoroutine(goToCredits());
         }
         else if (health <= 0)
         {

@@ -10,6 +10,7 @@ TagManager:
   - Gateway
   - Boss Gateway
   - Save Point
+  - Final Boss
   layers:
   - Default
   - TransparentFX

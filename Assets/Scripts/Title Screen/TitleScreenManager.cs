@@ -8,7 +8,7 @@ public class TitleScreenManager : MonoBehaviour
 
     public void StartTheGame() {
         print("starting the game");
-        LoadGame();
+        StartCoroutine(LoadGame());
     }
 
     public IEnumerator LoadGame() {

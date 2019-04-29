@@ -100,6 +100,10 @@ public class PlayerController : MonoBehaviour
             vitality = maxVitality;
             UpdateStats();
         }
+        if(SceneManager.GetActiveScene().name == "Credits")
+        {
+            Destroy(gameObject);
+        }
     }
 
     void MovePlayer() {

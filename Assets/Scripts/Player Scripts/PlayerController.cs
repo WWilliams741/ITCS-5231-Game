@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         agilityText.text = "";
         strengthText.text = "";
         vitalityText.text = "";
+        sounds.SetMountainMusic();
         if (data.agility != 0) {
             StartCoroutine(loadCorrectScene());
             //agility = data.agility;
@@ -147,12 +148,14 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Gateway" && bossDead) {
+            sounds.SetForestMusic();
             SaveGameData.instance.SaveData();
             SceneManager.LoadScene("Forest Scene");
         }
 
         if (other.gameObject.tag == "Boss Gateway" && bossDead) {
             print("boss is dead");
+            sounds.SetFinalBossMusic();
             SaveGameData.instance.SaveData();
             SceneManager.LoadScene("Boss Scene");
         }

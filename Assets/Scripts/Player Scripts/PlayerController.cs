@@ -195,9 +195,9 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1.5f)) {
             Debug.Log("Enemy was hit by raycast");
             EnemyScript hitObject = hit.collider.gameObject.GetComponent<EnemyScript>();
-            if (hitObject.tag.Equals("Enemy")) {
+            if (hitObject.tag.Equals("Enemy") || hitObject.tag.Equals("Final Boss")) {
                 hitObject.TakeDamage(strength);
-                if (hitObject.health <= 0) //If the enemy dies (health is less than or equals 0)
+                if (hitObject.health <= 0 && !hitObject.tag.Equals("Final Boss")) //If the enemy dies (health is less than or equals 0)
                 {
                     exp += hitObject.sourceData.expDrop; //Add a certain amount to the experience (give experience function)
                     int tempLevel = Log3(exp);

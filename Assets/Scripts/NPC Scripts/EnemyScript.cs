@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private Canvas enemyCanvas;
-    [SerializeField] private PlayerController Player;
+    // [SerializeField] private PlayerController Player;
     private float healthPercent;
     private float maxHealth;
     private NavMeshAgent agent;
@@ -186,8 +186,11 @@ public class EnemyScript : MonoBehaviour
     }
 
     public IEnumerator goToCredits() {
+        print("Loading to credits");
         SceneManager.LoadScene("Credits");
         yield return null;
+        print("Going to the credits!");
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("Credits"));
+        Destroy(GetComponent<PlayerController>().gameObject);
     }
 }

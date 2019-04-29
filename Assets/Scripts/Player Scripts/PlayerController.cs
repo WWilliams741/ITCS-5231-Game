@@ -83,13 +83,12 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        vitalityPercent = (float)vitality / maxVitality;
+        HealthBar();
         MovePlayer();
         AnimatePlayer();
         agilityText.text = "Agility (Max 10): " + agility;
         strengthText.text = "Strength: " + strength;
         vitalityText.text = "Vitality: " + maxVitality;
-        healthBar.fillAmount = vitalityPercent;
 
         if (vitality <= 0 && alive) {
             alive = false;
@@ -233,7 +232,7 @@ public class PlayerController : MonoBehaviour
                 print("vitality updated");
                 maxVitality += 10;
                 healthBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
-                healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(vitality, 25);
+                healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(maxVitality, 25);
                 break;
             case 1: // Strength
                 print("strength updated");
@@ -254,6 +253,7 @@ public class PlayerController : MonoBehaviour
         // set the levelUp menu to inactive;
         levelUpMenu.gameObject.SetActive(false);
         Time.timeScale = 1;
+        HealthBar();
     }
 
     //Leveling Utility 
@@ -290,6 +290,15 @@ public class PlayerController : MonoBehaviour
 
     public void setBossDead(bool _bossDead) {
         bossDead = _bossDead;
+    }
+
+    private void HealthBar()
+    {
+        vitalityPercent = (float)vitality / maxVitality;
+        healthBar.fillAmount = vitalityPercent;
+        Debug.Log(healthBar.GetComponent<RectTransform>().sizeDelta.x);
+        Debug.Log(healthBackground.GetComponent<RectTransform>().sizeDelta.x);
+        Debug.Log(vitalityPercent);
     }
 
    IEnumerator loadCorrectScene() {
